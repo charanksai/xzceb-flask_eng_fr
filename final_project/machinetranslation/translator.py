@@ -7,7 +7,7 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 load_dotenv()
 # Read from .env file for hitting watson's translator api
-apikey = os.getenv('apikey', 'b6NGymJQo-j_FEKe7y3INKF6-4nbvaDnTbj_rvhhmMZL')
+apikey = os.getenv('apikey', '')
 url = os.getenv('url', 'https://api.eu-gb.language-translator.watson.cloud.ibm.com')
 vrsn = os.getenv('vrsn', '2018-05-01')
 
