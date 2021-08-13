@@ -1,7 +1,7 @@
 """Test module that allows to test french and english translations using IBM Watson"""
 
 import unittest
-from machinetranslation import translator 
+import translator 
 
 class TestEnglishToFrench(unittest.TestCase):
     def test_pass_e2f(self):
