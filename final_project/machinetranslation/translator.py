@@ -31,8 +31,9 @@ def french_to_english(french_text):
     return english_translation
 
 #Invoking the methods
-TEXT = input("Enter text to see it in french: ")#"Hello World, How is everything going?"
-fr_text = english_to_french(TEXT)
-print("French: ", fr_text)
-en_text = french_to_english(fr_text)
-print("English: ", en_text)
+if __name__ == "__main__":
+    TEXT = input("Enter text to see it in french: ")
+    fr_text = english_to_french(TEXT)
+    print("French: ", fr_text)
+    en_text = french_to_english(fr_text)
+    print("English: ", en_text)
