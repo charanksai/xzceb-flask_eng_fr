@@ -7,26 +7,23 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 load_dotenv()
 # Read from .env file for hitting watson's translator api
-apikey = os.getenv('apikey')
-url = os.getenv('url')
-vrsn = os.getenv('vrsn')
+apikey = os.getenv('apikey', 'b6NGymJQo-j_FEKe7y3INKF6-4nbvaDnTbj_rvhhmMZL')
+url = os.getenv('url', 'https://api.eu-gb.language-translator.watson.cloud.ibm.com')
+vrsn = os.getenv('vrsn', '2018-05-01')
 
-# create an instance of Language Translator
-def instance():
-    """Creates Instance of Language Translator"""
-    authenticator = IAMAuthenticator(apikey)
-    language_translator = LanguageTranslatorV3(version=vrsn,authenticator=authenticator)
-    language_translator.set_service_url(url)
-    return language_translator
+authenticator = IAMAuthenticator(apikey)
+language_translator = LanguageTranslatorV3(version=vrsn,authenticator=authenticator)
+language_translator.set_service_url(url)
 
-def english_to_french(language_translator, english_text):
+
+def english_to_french(english_text):
     """Converts text from English to French"""
     translation_response = language_translator.translate(text=english_text, model_id='en-fr')
     translation=translation_response.get_result()
     french_translation =translation['translations'][0]['translation']
     return french_translation
 
-def french_to_english(language_translator, french_text):
+def french_to_english(french_text):
     """Converts text from French to English"""
     translation_response = language_translator.translate(text=french_text ,model_id='fr-en')
     translation=translation_response.get_result()
@@ -34,9 +31,8 @@ def french_to_english(language_translator, french_text):
     return english_translation
 
 #Invoking the methods
-tr_instance = instance()
-TEXT = "Hello World, How is everything going?"
-fr_text = english_to_french(tr_instance, TEXT)
-print(fr_text)
-en_text = french_to_english(tr_instance, fr_text)
-print(en_text)
+TEXT = input("Enter text to see it in french: ")#"Hello World, How is everything going?"
+fr_text = english_to_french(TEXT)
+print("French: ", fr_text)
+en_text = french_to_english(fr_text)
+print("English: ", en_text)

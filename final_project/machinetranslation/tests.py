@@ -1,9 +1,7 @@
 """Test module that allows to test french and english translations using IBM Watson"""
 
 import unittest
-import sys
-sys.path.insert(0, '../')
-import translator 
+from machinetranslation import translator 
 
 class TestEnglishToFrench(unittest.TestCase):
     def test_pass_e2f(self):
@@ -21,4 +19,5 @@ class TestFrenchToEnglish(unittest.TestCase):
     def test_fail_f2e(self):
         self.assertNotEqual(translator.french_to_english(None), "")
 
-unittest.main()
+if __name__ == "__main__":
+    unittest.main()
